@@ -1,0 +1,15 @@
+import 'package:flutter/material.dart';
+
+Color textColor = Color(0xff707070);
+int shirt = 0;
+int pant = 0;
+
+List<String> shirtImages = [
+  'assets/images/white_tshirt_front.png',
+  'assets/images/red_shirt.png',
+];
+
+List<String> pantImages = [
+  'assets/images/black_nightpant.png',
+  'assets/images/grey_nightpant.png',
+];

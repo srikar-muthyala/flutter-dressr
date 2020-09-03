@@ -1,0 +1,7 @@
+class PantModel{
+  String name;
+
+  PantModel(String name){
+    this.name = name;
+  }
+}

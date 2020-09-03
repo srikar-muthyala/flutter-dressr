@@ -1,0 +1,7 @@
+class ShirtModel{
+  String name;
+
+  ShirtModel(String name){
+    this.name = name;
+  }
+}
