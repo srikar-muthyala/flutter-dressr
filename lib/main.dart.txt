@@ -1,0 +1,118 @@
+import 'package:dressr/screens/weather.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'variables.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData.dark(),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    var timeNow = int.parse(DateFormat('kk').format(now));
+
+    var message = '';
+
+    if (timeNow <= 12) {
+      message = 'Good morning!';
+    } else if ((timeNow > 12) && (timeNow <= 16)) {
+      message = 'Good afternoon!';
+    } else if ((timeNow > 16) && (timeNow <= 20)) {
+      message = 'Good evening!';
+    }
+
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                message,
+                style: TextStyle(
+                  fontSize: 30,
+                  color: textColor,
+                  fontFamily: 'Montserrat',
+                ),
+              ),
+              Text(
+                'What to',
+                style: TextStyle(
+                  fontSize: 54,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Montserrat',
+                  color: textColor,
+                ),
+              ),
+              Text(
+                'wear today?',
+                style: TextStyle(
+                    fontSize: 54,
+                    color: textColor,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Montserrat'),
+              ),
+              Image.asset(
+                'assets/images/white_front.png',
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                child: GestureDetector(
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => WeatherScreen())),
+                  child: Container(
+                    height: 75,
+                    width: 207,
+                    decoration: BoxDecoration(
+                      color: Color(0xffD5D5D5),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Go!',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white,
+    );
+    // Center is a layout widget. It takes a single child and positions it
+    // in the middle of the parent.
+    // This trailing comma makes auto-formatting nicer for build methods.
+  }
+}
