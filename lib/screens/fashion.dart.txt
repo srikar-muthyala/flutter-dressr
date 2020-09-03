@@ -1,0 +1,88 @@
+import 'package:dressr/screens/weather.dart';
+import 'package:flutter/material.dart';
+
+import '../variables.dart';
+
+class FashionPage extends StatefulWidget {
+  @override
+  _FashionPageState createState() => _FashionPageState();
+}
+
+class _FashionPageState extends State<FashionPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 30),
+              child: Text(
+                'Style',
+                style: TextStyle(
+                    fontSize: 54,
+                    color: textColor,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Montserrat'),
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20, bottom: 20),
+                child: GestureDetector(
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => WeatherScreen())),
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.black,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey[600],
+                          offset: Offset(0.0, 5.0),
+                          blurRadius: 30.0,
+                        )
+                      ],
+                    ),
+                    child: Icon(
+                      Icons.home,
+                      size: 50,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 50),
+              child: GestureDetector(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => WeatherScreen())),
+                child: Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.black,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey[600],
+                          offset: Offset(0.0, 5.0),
+                          blurRadius: 30.0,
+                        )
+                      ],
+                    ),
+                    child: Icon(
+                      Icons.work,
+                      size: 50,
+                    )),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

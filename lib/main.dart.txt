@@ -1,3 +1,4 @@
+import 'package:dressr/screens/fashion.dart';
 import 'package:dressr/screens/weather.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -84,13 +85,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                 child: GestureDetector(
                   onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => WeatherScreen())),
+                      MaterialPageRoute(builder: (context) => FashionPage())),
                   child: Container(
                     height: 75,
                     width: 207,
                     decoration: BoxDecoration(
                       color: Color(0xffD5D5D5),
                       borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey[400],
+                          offset: Offset(0.0, 5.0),
+                          blurRadius: 30.0,
+                        )
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -104,6 +112,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 40,
               ),
             ],
           ),
