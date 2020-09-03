@@ -1,0 +1,89 @@
+import 'package:dressr/screens/sunny.dart';
+import 'package:dressr/variables.dart';
+import 'package:flutter/material.dart';
+
+class WeatherScreen extends StatefulWidget {
+  @override
+  _WeatherScreenState createState() => _WeatherScreenState();
+}
+
+class _WeatherScreenState extends State<WeatherScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+                child: Text('How\'s the', style: TextStyle(
+                  color: textColor,
+                  fontSize: 54,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.bold
+                ),),
+
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                child: Text('weather?', style: TextStyle(
+                    color: textColor,
+                    fontSize: 54,
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.bold
+                ),),
+
+              ),
+              SizedBox(height: 30,),
+              Padding(
+                padding: const EdgeInsets.only(left: 80),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 154,
+                      height: 154,
+                      decoration: BoxDecoration(
+                        color: Color(0xff9DFAFE),
+                        shape: BoxShape.circle,
+                      ),
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SunnyPage())),
+                          child: Image.asset('assets/images/sunny.png')),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: 154,
+                      height: 154,
+                      decoration: BoxDecoration(
+                        color: Color(0xff717474),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Image.asset('assets/images/cold.png'),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: 154,
+                      height: 154,
+                      decoration: BoxDecoration(
+                        color: Color(0xff3D3D3D),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Image.asset('assets/images/thunderstorm.png'),
+                    ),
+                    SizedBox(height: 20,),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white,
+    );
+  }
+}
