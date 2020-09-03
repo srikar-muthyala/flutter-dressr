@@ -1,0 +1,208 @@
+import 'package:dressr/pant_mondel.dart';
+import 'package:dressr/shirt_model.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'dart:math';
+import '../variables.dart';
+
+class SunnyPage extends StatefulWidget {
+  @override
+  _SunnyPageState createState() => _SunnyPageState();
+}
+
+class _SunnyPageState extends State<SunnyPage> {
+  List<ShirtModel> shirts = [
+    ShirtModel('White t-shirt'),
+    ShirtModel('Red t-shirt'),
+    ShirtModel('Grey t-shirt'),
+    ShirtModel('Green t-shirt'),
+    ShirtModel('Light grey t-shirt'),
+  ];
+
+  List<PantModel> pants = [
+    PantModel('Black nightpant'),
+    PantModel('Grey nightpant'),
+  ];
+
+  Random random = new Random();
+
+  @override
+  Widget build(BuildContext context) {
+    void indexChange() {
+      setState(() {
+        shirt = random.nextInt(2);
+        pant = random.nextInt(2);
+      });
+    }
+
+    return Scaffold(
+      // backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 200,
+              child: GestureDetector(
+                onTap: () {
+                  indexChange();
+                },
+                child: Container(
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Image.asset(
+                    'assets/images/random.png',
+                    scale: 14,
+                  ),
+                ),
+              ),
+            ),
+            Stack(
+              children: [
+                Container(
+                  height: 480,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(40),
+                        topLeft: Radius.circular(40)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(30, 120, 0, 0),
+                  child: Container(
+                    height: 130,
+                    width: 330,
+                    color: Color(0xff9DFAFE),
+                  ),
+                ),
+                Positioned(
+                  left: 190,
+                  top: 30,
+                  child: Container(
+                      height: 200,
+                      width: 200,
+                      color: Colors.transparent,
+                      child: shirt == 0
+                          ? Image.asset(
+                              shirtImages[shirt],
+                            )
+                          : shirt == 1
+                              ? Image.asset(
+                                  shirtImages[shirt],
+                                )
+                              : Image.asset(
+                                  'assets/images/random.png',
+                                )),
+                ),
+                Positioned(
+                  top: 130,
+                  left: 70,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        shirt = random.nextInt(2);
+                      });
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      height: 50,
+                      width: 50,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/images/random.png',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 200,
+                  left: 50,
+                  child: Text(
+                    shirts[shirt].name,
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(30, 320, 0, 0),
+                  child: Container(
+                    height: 130,
+                    width: 330,
+                    color: Color(0xff9DFAFE),
+                  ),
+                ),
+                Positioned(
+                  left: 220,
+                  top: 250,
+                  child: Container(
+                    height: 150,
+                    width: 150,
+                    color: Colors.transparent,
+                    child: shirt == 0
+                        ? Image.asset(pantImages[pant])
+                        : shirt == 1
+                            ? Image.asset(pantImages[pant])
+                            : Image.asset(
+                                'assets/images/random.png',
+                              ),
+                  ),
+                ),
+                Positioned(
+                  top: 330,
+                  left: 70,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        pant = random.nextInt(2);
+                      });
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      height: 50,
+                      width: 50,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/images/random.png',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 400,
+                  left: 50,
+                  child: Text(
+                    pants[pant].name,
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      backgroundColor: Color(0xff9DFAFE),
+    );
+  }
+}
